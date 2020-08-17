@@ -1,0 +1,15 @@
+h1, h3 {
+  text-align: center;
+  margin-bottom: 1rem !important;
+}
+#toppingsContainer {
+  max-height: 20rem;
+  flex-wrap: wrap;
+}
+#sizeContainer {
+  max-height: 20rem;
+  flex-wrap: wrap;
+}
+.pizza-selection {
+  text-align: center;
+}

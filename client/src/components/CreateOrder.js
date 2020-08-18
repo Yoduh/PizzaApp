@@ -3,7 +3,7 @@ import ToppingsList from './ToppingsList';
 import SizesList from './SizesList';
 import OrderSummary from './OrderSummary';
 
-const CreateOrder = () => {
+const CreateOrder = ({user}) => {
     /********  initialize state *********/
     const [toppings, setToppings] = useState([]);
     const [sizes, setSizes] = useState([]);
@@ -70,14 +70,16 @@ const CreateOrder = () => {
     }
 
     const addPizzaToOrder = () => {
-        if (!pizza.toppings || pizza.toppings.length === 0)
+        if (!pizza.toppings || pizza.toppings.length === 0) {
             setError('Please add at least 1 topping');
-        else if (!pizza.size)
-            setError('Please select a size');
-        else {
-            setError('');
-            setOrder([...order, pizza]);
+            return;
         }
+        else if (!pizza.size) {
+            setError('Please select a size');
+            return;
+        }
+        setError('');
+        setOrder([...order, pizza]);
         // clear pizza options
         setPizza({});
     }
@@ -101,11 +103,16 @@ const CreateOrder = () => {
                 </div>
             </div>
             <div id="button-row" className="row d-flex justify-content-end align-items-center">
-                <p id="errorMessage">{error ? error : ''}</p>
+                <p className="errorMessage">{error ? error : ''}</p>
                 <button className="btn btn-secondary clear mr-2" onClick={() => setPizza({})}>Clear Options</button>
                 <button className="btn btn-info add-to-order" onClick={() => addPizzaToOrder()}>Add to Order</button>
             </div>
-            {order.length > 0 ? <OrderSummary order={order} setOrder={setOrder}/> : null}
+            {order.length > 0 ? 
+                (<div id="summaryBorder">
+                    <h2 className="m-3">Order Summary</h2>
+                    <OrderSummary order={order} setOrder={setOrder} user={user}/>
+                </div>)
+            : null}
         </div>
     </div>
     );

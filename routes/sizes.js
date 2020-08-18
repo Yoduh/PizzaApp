@@ -5,10 +5,10 @@ const Sizes = require('../models/Size');
 /* GET sizes. */
 router.get('/', (req, res) => {
     Sizes.findAll()
-        .then(sizes => {
-            res.send(sizes);
-        })
-        .catch(err => console.log("Error: " + err));
+    .then(sizes => {
+        res.send(sizes);
+    })
+    .catch(err => console.log("Error: " + err));
 });
   
 /* Script to add all sizes in PGAdmin:

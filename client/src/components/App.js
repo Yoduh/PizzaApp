@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import CreateOrder from './CreateOrder';
 import OrderHistory from './OrderHistory';
+import Navbar from './Navbar';
 import './App.css';
 
 const App = () => {
+  const [user, setUser] = useState(null);
   return (
-    <BrowserRouter>
+    <div>
+      <BrowserRouter>
         <div>
-            <Route path="/" exact component={CreateOrder} />
-            <Route path="/history" exact component={OrderHistory} />
+            <Navbar setUser={setUser}/>  
+            <Route exact path="/">
+              <CreateOrder user={user} />
+            </Route>
+            <Route exact path="/history">
+              <OrderHistory user={user} />
+            </Route>
         </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
 

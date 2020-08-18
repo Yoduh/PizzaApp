@@ -29,22 +29,45 @@ h1, h3 {
 #button-row {
   margin: 0 2rem 1rem 0;
 }
-#errorMessage {
+.errorMessage {
   font-style: italic;
   color: red;
   margin: 0 1rem 0 0;
 }
-#summaryContainer {
-  width: 100%;
+#summaryBorder {
   border: 2px solid black;
 }
-.toppings {
+#summaryContainer {
+  width: 100%;
+}
+.row.toppings {
   font-style: italic;
+}
+#col-price {
+  max-width: 4rem;
+  padding: 0;
+  text-align: right;
+}
+#col-remove {
+  max-width: 5rem;
+  padding: 0;
 }
 #orderCost {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.history-row {
+  width: 100%;
+  display: inline-block;
+  border: 2px solid black;
+  padding: 1rem 1rem 0 1rem;
+  margin-bottom: 2rem;
+}
+.history-row .btn {
+  float: right;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 767px) {

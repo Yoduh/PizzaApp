@@ -9,11 +9,11 @@ router.get('/meat', (req, res) => {
             ismeat: 'TRUE'
         }
     })
-        .then(toppings => {
-            console.log("success");
-            res.send(toppings);
-        })
-        .catch(err => console.log("Error: " + err));
+    .then(toppings => {
+        console.log("success");
+        res.send(toppings);
+    })
+    .catch(err => console.log("Error: " + err));
 });
 
 /* GET non-meat toppings. */
@@ -23,21 +23,21 @@ router.get('/nonmeat', (req, res) => {
             ismeat: 'FALSE'
         }
     })
-        .then(toppings => {
-            console.log("success");
-            res.send(toppings);
-        })
-        .catch(err => console.log("Error: " + err));
+    .then(toppings => {
+        console.log("success");
+        res.send(toppings);
+    })
+    .catch(err => console.log("Error: " + err));
 });
 
 /* GET all toppings. */
 router.get('/', (req, res) => {
     Toppings.findAll()
-        .then(toppings => {
-            console.log("success");
-            res.send(toppings);
-        })
-        .catch(err => console.log("Error: " + err));
+    .then(toppings => {
+        console.log("success");
+        res.send(toppings);
+    })
+    .catch(err => console.log("Error: " + err));
 });
 
 // POST to add hardcoded topping to DB example

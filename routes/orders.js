@@ -2,7 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Orders = require('../models/Order');
 
-/* GET sizes. */
+/* GET customer orders */
+router.get('/:customer_id', (req, res) => {
+    Orders.findAll({
+        where: {
+            customer_id: req.params.customer_id
+        }
+        })
+        .then(orders => {
+            res.send(orders);
+        })
+        .catch(err => console.log("Error: " + err));
+});
+
+/* GET all orders (admin only) */
 router.get('/', (req, res) => {
     Orders.findAll()
         .then(orders => {
@@ -11,11 +24,9 @@ router.get('/', (req, res) => {
         .catch(err => console.log("Error: " + err));
 });
 
-router.post('/add', (req, res) => {
+/* POST new order */
+router.post('/', (req, res) => {
     const { order, cost, customer_id } = req.body;
-    console.log(order);
-    console.log(cost);
-    console.log(customer_id);
     Orders.create({
         order,
         cost,
@@ -25,7 +36,22 @@ router.post('/add', (req, res) => {
         console.log("success");
         res.send(order);
     })
-    .catch(err => console.log("Error: " + err));
+    .catch(err => console.log("*Error: " + err));
 });
+
+/* DELETE existing order */
+router.delete('/:id', (req, res) => {
+    Orders.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(rowsDestroyed => {
+        console.log("success");
+        console.log(rowsDestroyed);
+        res.sendStatus(200);
+    })
+    .catch(err => console.log("Error: " + err));
+})
 
 module.exports = router;

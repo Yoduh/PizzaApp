@@ -7,6 +7,7 @@ const Checkbox = ({label, handleCheckboxChange, pizza}) => {
         handleCheckboxChange(label, isChecked);
     }, [isChecked])
 
+    // if topping is no longer on pizza (options cleared or pizza added), uncheck the box
     useEffect(() => {
         if (pizza.toppings && pizza.toppings.filter(topping => topping === label))
             return;

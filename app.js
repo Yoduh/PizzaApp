@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const toppingsRouter = require('./routes/toppings');
 const sizesRouter = require('./routes/sizes');
+const ordersRouter = require('./routes/orders');
 // Database
 const db = require('./config/database');
 
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/toppings', toppingsRouter);
 app.use('/sizes', sizesRouter);
+app.use('/orders', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

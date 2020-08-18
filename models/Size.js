@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Size = db.define('size', {
-    size: {
+    name: {
         type: Sequelize.STRING
     },
     price: {

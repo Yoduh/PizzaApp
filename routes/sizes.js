@@ -6,17 +6,16 @@ const Sizes = require('../models/Size');
 router.get('/', (req, res) => {
     Sizes.findAll()
         .then(sizes => {
-            console.log("success");
             res.send(sizes);
         })
         .catch(err => console.log("Error: " + err));
 });
   
 /* Script to add all sizes in PGAdmin:
-INSERT INTO "sizes" ("size", "price") VALUES ('Small', '7.99');
-INSERT INTO "sizes" ("size", "price") VALUES ('Medium', '8.99');
-INSERT INTO "sizes" ("size", "price") VALUES ('Large', '9.99');
-INSERT INTO "sizes" ("size", "price") VALUES ('Super', '12.99');
+INSERT INTO "sizes" ("name", "price") VALUES ('Small', '7.99');
+INSERT INTO "sizes" ("name", "price") VALUES ('Medium', '8.99');
+INSERT INTO "sizes" ("name", "price") VALUES ('Large', '9.99');
+INSERT INTO "sizes" ("name", "price") VALUES ('Super', '12.99');
 */
 module.exports = router;
   

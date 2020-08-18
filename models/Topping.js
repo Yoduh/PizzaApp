@@ -2,13 +2,13 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Topping = db.define('topping', {
-    topping: {
+    name: {
         type: Sequelize.STRING
     },
     price: {
         type: Sequelize.NUMBER
     },
-    isMeat: {
+    ismeat: {
         type: Sequelize.BOOLEAN
     }
 });

@@ -1,6 +1,5 @@
 # Install
 Using PgAdmin or the psql CLI create a local PostgreSQL database called `pizza-orders`
-psql CLI command: `create database pizza-orders;`
 
 Clone this git project to your local machine
 Install both the frontend and backend with

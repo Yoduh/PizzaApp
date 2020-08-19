@@ -8,7 +8,7 @@ const SizesList = ({sizes, changeSize, pizza}) => {
             return (
                 // clicking will add size to pizza object which will make button 'active'
                 <button type="button"
-                    className={`btn btn-primary mb-2 sizeButton ${pizza.size === size.name ? ' active' : ''}`} 
+                    className={`btn mb-2 sizeButton ${pizza.size === size.name ? ' active' : ''}`} 
                     key={size.name}
                     onClick={() => changeSize(size.name)}>
                         {size.name}

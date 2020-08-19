@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import ToppingsList from './ToppingsList';
 import SizesList from './SizesList';
 import OrderSummary from './OrderSummary';
+import QuantityWidget from './QuantityWidget';
+import pizzaSize from '../images/pizza-size.png';
 
 const CreateOrder = ({user}) => {
     /********  initialize state *********/
@@ -10,6 +12,7 @@ const CreateOrder = ({user}) => {
     const [pizza, setPizza] = useState({})
     const [order, setOrder] = useState([]);
     const [error, setError] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
     // get available toppings from backend
     const fetchToppings = async () => {
@@ -79,19 +82,24 @@ const CreateOrder = ({user}) => {
             return;
         }
         setError('');
-        setOrder([...order, pizza]);
+        const updatedOrder = [...order];
+        for (let i = 0; i < quantity; i++)
+            updatedOrder.push(pizza);
+        setOrder(updatedOrder);
         // clear pizza options
         setPizza({});
+        setQuantity(1);
     }
 
     return (        
     <div className="App">
-        <h1>Create Your Pizza Order</h1>
+        <h1 id="title">Create Your Pizza</h1>
         <div className="container">
             <div className="row">
-                <div className="col-sm-12 col-md-3 meatToppings">
+                <div className="col-sm-12 col-md-3 pizzaSizes">
                     <h4>Select Pizza Size</h4>
                     <SizesList sizes={sizes} changeSize={changeSize} pizza={pizza}/>
+                    <img className={`pizza-size-img ${pizza.size}`} src={pizzaSize} alt="pizza-size"/>
                 </div>
                 <div className="col-sm-12 col-md-3 meatToppings">
                     <h4>Meat Toppings</h4>
@@ -102,13 +110,14 @@ const CreateOrder = ({user}) => {
                     <ToppingsList toppings={toppings} ismeat={false} changeToppings={changeToppings} pizza={pizza}/>
                 </div>
             </div>
-            <div id="button-row" className="row d-flex justify-content-end align-items-center">
+            <div id="button-row" className="row d-flex align-items-center">
                 <p className="errorMessage">{error ? error : ''}</p>
-                <button className="btn btn-secondary clear mr-2" onClick={() => setPizza({})}>Clear Options</button>
+                <button className="btn btn-secondary clear" onClick={() => setPizza({})}>Clear Options</button>
+                <QuantityWidget quantity={quantity} setQuantity={setQuantity}/>
                 <button className="btn btn-info add-to-order" onClick={() => addPizzaToOrder()}>Add to Order</button>
             </div>
             {order.length > 0 ? 
-                (<div id="summaryBorder">
+                (<div id="summaryBorder" data-margin={pizza.size}>
                     <h2 className="m-3">Order Summary</h2>
                     <OrderSummary order={order} setOrder={setOrder} user={user}/>
                 </div>)

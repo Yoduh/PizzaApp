@@ -6,6 +6,7 @@
     "start": "concurrently \"node ./bin/www\" \"cd client && npm start\"",
     "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\"",
     "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
+    "create-tables": "knex migrate:latest",
     "migrate": "knex migrate:latest && knex seed:run",
     "reseed": "knex seed:run"
   },

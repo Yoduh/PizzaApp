@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import OrderPizza from './OrderPizza'
 import OrderSummary from './OrderSummary'
 
 const OrderHistory = ({user}) => {
@@ -48,7 +47,7 @@ const OrderHistory = ({user}) => {
             : history.map((item) => {
                 return (
                     <div className="history-row" key={item.id}>
-                        <h4>{user === 'Admin' ? item.customer_id == -1 ? 'Admin ' : `Customer #${item.customer_id} ` : ''}Order #{item.id}</h4>
+                        <h4>{user === 'Admin' ? item.customer_id === -1 ? 'Admin ' : `Customer #${item.customer_id} ` : ''}Order #{item.id}</h4>
                         {/* {item.order.map((pizza, index) => { 
                             return (<OrderPizza pizza={pizza} index={index} key={`${item.id}-${index}`}/>)
                         })} */}
@@ -61,7 +60,7 @@ const OrderHistory = ({user}) => {
     }
     return (
         <div className="container historyContainer">
-            <h1>Order History</h1>
+            <h1 id="title">Order History</h1>
             {renderHistory()}
         </div>
     );

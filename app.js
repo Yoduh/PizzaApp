@@ -1,15 +1,18 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const createError   = require('http-errors'),
+      express       = require('express'),
+      path          = require('path'),
+      cookieParser  = require('cookie-parser'),
+      logger        = require('morgan'),
+      cors          = require('cors');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const toppingsRouter = require('./routes/toppings');
-const sizesRouter = require('./routes/sizes');
-const ordersRouter = require('./routes/orders');
-require('dotenv').config();
+const indexRouter     = require('./routes/index'),
+      usersRouter     = require('./routes/users'),
+      toppingsRouter  = require('./routes/toppings'),
+      sizesRouter     = require('./routes/sizes'),
+      ordersRouter    = require('./routes/orders');
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 // Database
 const db = require('./config/database');
 
@@ -24,6 +27,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

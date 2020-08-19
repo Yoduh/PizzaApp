@@ -1,10 +1,29 @@
+## Install
+Using PgAdmin or the psql CLI: create a local PostgreSQL database called `pizza-orders`
+CLI command: `create database pizza-orders;`
+
+Clone this git project to your local machine
+
+Navigate to project and do `npm run install-all`
+This will install both the frontend and backend
+
+From here you can EITHER:
+a) Create only the empty tables if you don't want any starter data: `npm run create-tables`
+b) Create and seed the tables with some initial data (toppings, sizes, and orders): `npm run migrate`
+
+If later on you want to wipe and reset your data to the initial seed data you can use `npm run reseed`
+
+Finally, to run both the frontend and backend together type `npm start`
+The frontend runs on localhost:3000 and the backend on localhost:3001
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,12 +31,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -27,7 +46,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### `npm eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 

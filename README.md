@@ -3,7 +3,7 @@
 https://ahpizza.herokuapp.com/
 
 # Local Install
-Using PgAdmin or the psql CLI create a local PostgreSQL database called `pizza-orders`
+Using PgAdmin or the psql CLI create a local PostgreSQL database called `pizza-orders` with username `postgres` password `postgres`
 
 Clone this git project to your local machine
 

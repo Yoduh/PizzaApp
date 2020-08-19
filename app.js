@@ -3,6 +3,7 @@ const createError   = require('http-errors'),
       path          = require('path'),
       cookieParser  = require('cookie-parser'),
       logger        = require('morgan'),
+      favicon       = require("serve-favicon"),
       cors          = require('cors');
 
 const indexRouter     = require('./routes/index'),

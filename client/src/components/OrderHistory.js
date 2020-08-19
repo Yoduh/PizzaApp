@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import OrderSummary from './OrderSummary'
 
-const OrderHistory = ({user}) => {
+const OrderHistory = ({user ,setIsLoading}) => {
     const [history, setHistory] = useState([]);
     // get orders based on logged in user from backend
     useEffect(() => {
@@ -10,13 +10,16 @@ const OrderHistory = ({user}) => {
             const results = await fetch(url);
             let data = await results.text();
             setHistory(JSON.parse(data));
+            setIsLoading(false);
         }
         if (!user) {
             setHistory([]);
             return;
         }
+        setHistory([]);
+        setIsLoading(true);
         fetchOrders();
-    }, [user])
+    }, [user, setIsLoading])
     
     const removeHistory = (id) => {
         async function deleteOrder(url = '') {
@@ -48,9 +51,6 @@ const OrderHistory = ({user}) => {
                 return (
                     <div className="history-row" key={item.id}>
                         <h4>{user === 'Admin' ? item.customer_id === -1 ? 'Admin ' : `Customer #${item.customer_id} ` : ''}Order #{item.id}</h4>
-                        {/* {item.order.map((pizza, index) => { 
-                            return (<OrderPizza pizza={pizza} index={index} key={`${item.id}-${index}`}/>)
-                        })} */}
                         <OrderSummary order={item.order} />
                         {user === 'Admin' ? <button className="btn btn-danger" onClick={() => removeHistory(item.id)}>Delete from History</button> : null}
                     </div>

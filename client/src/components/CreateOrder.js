@@ -5,7 +5,7 @@ import OrderSummary from './OrderSummary';
 import QuantityWidget from './QuantityWidget';
 import pizzaSize from '../images/pizza-size.png';
 
-const CreateOrder = ({user}) => {
+const CreateOrder = ({user, setIsLoading}) => {
     /********  initialize state *********/
     const [toppings, setToppings] = useState([]);
     const [sizes, setSizes] = useState([]);
@@ -30,9 +30,15 @@ const CreateOrder = ({user}) => {
 
     // on initial load, fetch all toppings and sizes and set them as state
     useEffect(() => {
+        setIsLoading(true);
         fetchToppings();
         fetchSizes();
-    }, [])
+    }, [setIsLoading])
+    
+    useEffect(() => {
+        if (sizes && toppings && sizes.length > 0 && toppings.length > 0)
+            setIsLoading(false);
+    }, [sizes, toppings, setIsLoading])
 
     // calculates price of pizza on any change to size or toppings
     const calculatePrice = (updatedToppings, updatedSize) => {
@@ -60,7 +66,6 @@ const CreateOrder = ({user}) => {
         // topping checked on
         if (isChecked) {
             if (pizza.toppings)
-                //setPizza({...pizza, toppings: [...pizza.toppings, topping]});
                 updatedToppings = [...pizza.toppings, topping];
             else
                 updatedToppings = [topping];
@@ -77,7 +82,7 @@ const CreateOrder = ({user}) => {
             setError('Please add at least 1 topping');
             return;
         }
-        else if (!pizza.size) { // with default size should no longer hit
+        else if (!pizza.size) { // should no longer hit with default size set
             setError('Please select a size');
             return;
         }
@@ -90,7 +95,7 @@ const CreateOrder = ({user}) => {
         setPizza({size: sizes[0].name});
         setQuantity(1);
     }
-    console.log(sizes);
+    
     return (        
     <div className="App">
         <h1 id="title">Create Your Pizza</h1>
@@ -113,7 +118,7 @@ const CreateOrder = ({user}) => {
             </div>
             <div id="button-row" className="row d-flex align-items-center">
                 <p className="errorMessage">{error ? error : ''}</p>
-                <button className="btn btn-secondary clear mr-2" onClick={() => setPizza({size: pizza.size})}>Clear Options</button>
+                <button className="btn btn-secondary clear mr-2" onClick={() => setPizza({size: pizza.size})}>Clear Toppings</button>
                 <QuantityWidget quantity={quantity} setQuantity={setQuantity}/>
                 <button className="btn btn-info add-to-order ml-2" onClick={() => addPizzaToOrder()}>Add to Order</button>
             </div>

@@ -10,6 +10,24 @@ body {
   background: rgb(255,136,0) no-repeat center center fixed; 
   background: linear-gradient(180deg, rgba(255,136,0,1) 0%, rgba(215,42,19,1) 100%) no-repeat center center fixed; 
 }
+#loader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(95, 95, 95, 0.7);
+  z-index: 9999;
+}
+.hidden {
+    display: none;
+}
+.btn {
+  -webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+/********** Navbar **********/ 
 .navbar {
   background-image: url(../images/wood.jpg); 
   -webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
@@ -26,6 +44,7 @@ body {
 .dropdown-menu {
   background-color: rgb(211, 211, 211) !important;
 }
+/********** Headers **********/
 #title {
   margin: 1rem 0 2rem 0;
   text-align: center;
@@ -41,13 +60,6 @@ h3 {
 h4, h2 {
   color: rgba(215,42,19,1);
   text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
-}
-.btn {
-  -webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
-
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
 #toppingsContainer {
   max-height: 20rem;

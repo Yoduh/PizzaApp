@@ -27,13 +27,14 @@ body {
   background-color: rgb(211, 211, 211) !important;
 }
 #title {
-  margin-top: 1rem;
+  margin: 1rem 0 2rem 0;
+  text-align: center;
   font-family: 'Pacifico', cursive;
   font-size: 5rem;
   color: rgba(215,42,19,1);
   text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
 }
-h1, h3 {
+h3 {
   text-align: center;
   margin-bottom: 1rem !important;
 }
@@ -81,35 +82,28 @@ label {
   width: 80%;
   background-color: transparent;
 }
-.pizza-size-img.undefined {
+.pizza-size-img._0 {
   -webkit-transition: transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transform:scale(1);
   transform-origin:top;
 }
-.pizza-size-img.Small {
-  -webkit-transition: transform 0.5s ease-in-out;
-  -moz-transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;
-  transform:scale(1);
-  transform-origin:top;
-}
-.pizza-size-img.Medium {
+.pizza-size-img._1 {
   -webkit-transition: transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transform:scale(1.2);
   transform-origin:top;
 }
-.pizza-size-img.Large {
+.pizza-size-img._2 {
   -webkit-transition: transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transform:scale(1.4);
   transform-origin:top;
 }
-.pizza-size-img.Super {
+.pizza-size-img._3 {
   -webkit-transition: transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
@@ -122,7 +116,6 @@ label {
 }
 #button-row {
   margin: 1rem 2rem 1rem 0;
-  width: 50%;
   display: flex;
   float: right;
   justify-content: space-evenly;
@@ -202,6 +195,7 @@ label {
   width: 100%;
   display: inline-block;
   border: 2px solid black;
+  border-radius: 10px;
   padding: 1rem 1rem 0 1rem;
   margin-bottom: 2rem;
 }
@@ -211,47 +205,33 @@ label {
 }
 
 @media only screen and (max-width: 767px) {
-  .nav-link {
-    padding-left: 0 !important;
-  }
-  .dropdown-menu-right {
-    left: 0 !important;
-    top: 1.5rem !important;
-  }
   #toppingsContainer {
     max-height: initial;
   }
   #sizeContainer {
     max-height: initial;
   }
-  .pizza-size-img.undefined {
+  .pizza-size-img._0 {
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transform:scale(0.6);
     transform-origin:top;
   }
-  .pizza-size-img.Small {
-    -webkit-transition: transform 0.5s ease-in-out;
-    -moz-transition: transform 0.5s ease-in-out;
-    transition: transform 0.5s ease-in-out;
-    transform:scale(0.6);
-    transform-origin:top;
-  }
-  .pizza-size-img.Medium {  -webkit-transition: transform 0.5s ease-in-out;
+  .pizza-size-img._1 {  -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transform:scale(0.7);
     transform-origin:top;
   }
-  .pizza-size-img.Large {
+  .pizza-size-img._2 {
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transform:scale(0.8);
     transform-origin:top;
   }
-  .pizza-size-img.Super {
+  .pizza-size-img._3 {
     -webkit-transition: transform 0.5s ease-in-out;
     -moz-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
@@ -259,7 +239,22 @@ label {
     transform-origin:top;
   }
   #button-row {
-    width: 100vw;
+    height: 12rem;
     margin: 1rem 0 1rem 0;
+    flex-direction: column;
+    float: none;
+  }
+  #button-row .btn {
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-link {
+    padding-left: 0 !important;
+  }
+  .dropdown-menu-right {
+    left: 0 !important;
+    top: 1.5rem !important;
   }
 }

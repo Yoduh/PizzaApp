@@ -77,7 +77,7 @@ const CreateOrder = ({user}) => {
             setError('Please add at least 1 topping');
             return;
         }
-        else if (!pizza.size) {
+        else if (!pizza.size) { // with default size should no longer hit
             setError('Please select a size');
             return;
         }
@@ -87,10 +87,10 @@ const CreateOrder = ({user}) => {
             updatedOrder.push(pizza);
         setOrder(updatedOrder);
         // clear pizza options
-        setPizza({});
+        setPizza({size: sizes[0].name});
         setQuantity(1);
     }
-
+    console.log(sizes);
     return (        
     <div className="App">
         <h1 id="title">Create Your Pizza</h1>
@@ -99,7 +99,8 @@ const CreateOrder = ({user}) => {
                 <div className="col-sm-12 col-md-3 pizzaSizes">
                     <h4>Select Pizza Size</h4>
                     <SizesList sizes={sizes} changeSize={changeSize} pizza={pizza}/>
-                    <img className={`pizza-size-img ${pizza.size}`} src={pizzaSize} alt="pizza-size"/>
+                    {/* className to include index of pizza.size allowing CSS to figure out scale size */}
+                    <img className={`pizza-size-img _${sizes ? (sizes.findIndex(size => size.name === pizza.size)) : -1}`} src={pizzaSize} alt="pizza-size"/>
                 </div>
                 <div className="col-sm-12 col-md-3 meatToppings">
                     <h4>Meat Toppings</h4>
@@ -112,9 +113,9 @@ const CreateOrder = ({user}) => {
             </div>
             <div id="button-row" className="row d-flex align-items-center">
                 <p className="errorMessage">{error ? error : ''}</p>
-                <button className="btn btn-secondary clear" onClick={() => setPizza({})}>Clear Options</button>
+                <button className="btn btn-secondary clear mr-2" onClick={() => setPizza({size: pizza.size})}>Clear Options</button>
                 <QuantityWidget quantity={quantity} setQuantity={setQuantity}/>
-                <button className="btn btn-info add-to-order" onClick={() => addPizzaToOrder()}>Add to Order</button>
+                <button className="btn btn-info add-to-order ml-2" onClick={() => addPizzaToOrder()}>Add to Order</button>
             </div>
             {order.length > 0 ? 
                 (<div id="summaryBorder" data-margin={pizza.size}>

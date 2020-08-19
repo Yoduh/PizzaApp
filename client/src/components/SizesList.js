@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const SizesList = ({sizes, changeSize, pizza}) => {
+    // set first option as default
+    useEffect(() => {
+        if (sizes && sizes.length > 0) {
+            changeSize(sizes[0].name);
+        }
+    }, [sizes])
     // render each size as a separate button
     const renderSizes = (sizes) => {
         return sizes && sizes.length > 0 ? (

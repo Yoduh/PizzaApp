@@ -9,6 +9,7 @@ const usersRouter = require('./routes/users');
 const toppingsRouter = require('./routes/toppings');
 const sizesRouter = require('./routes/sizes');
 const ordersRouter = require('./routes/orders');
+require('dotenv').config();
 // Database
 const db = require('./config/database');
 

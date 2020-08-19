@@ -1,5 +1,4 @@
-// Update with your config settings.
-
+require('dotenv').config();
 module.exports = {
 
   development: {
@@ -7,9 +6,9 @@ module.exports = {
     connection: {
       host: process.env.DB_URL || 'localhost',
       port: 5432,
-      user: 'postgres',
-      password: 'postgres',
-      database: 'pizza-orders'
+      user: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || 'postgres',
+      database: process.env.DB_NAME || 'pizza-orders'
     },
     migrations: {
       directory: './data/migrations',
@@ -22,9 +21,9 @@ module.exports = {
     connection: {
       host: process.env.DB_URL || 'localhost',
       port: 5432,
-      user: 'postgres',
-      password: 'postgres',
-      database: 'test-db'
+      user: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || 'postgres',
+      database: process.env.DB_NAME || 'pizza-orders'
     },
     migrations: {
       directory: './data/migrations',
@@ -37,9 +36,9 @@ module.exports = {
     connection: {
       host: process.env.DB_URL || 'localhost',
       port: 5432,
-      user: 'postgres',
-      password: 'postgres',
-      database: 'production-db'
+      user: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || 'postgres',
+      database: process.env.DB_NAME || 'pizza-orders'
     },
     migrations: {
       directory: './data/migrations',
